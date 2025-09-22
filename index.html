@@ -334,31 +334,43 @@ target="_blank">App_Louvores🎤🎤</a> - Este projeto foi feito para  criar um
     meters.forEach(m=>io2.observe(m));
 
     // Theme toggle
-    const themeBtn=document.getElementById('theme');
-    let light=false;
-    themeBtn.addEventListener('click', ()=>{
-      light=!light;
-      if(light){
-        document.documentElement.style.setProperty('--bg','#f8fafc');
-        document.documentElement.style.setProperty('--panel','#ffffff');
-        document.documentElement.style.setProperty('--text','#0f172a');
-        document.documentElement.style.setProperty('--muted','#475569');
-        document.documentElement.style.setProperty('--card','#ffffffcc');
-        document.documentElement.style.setProperty('--chip','#e5e7eb');
-        document.body.style.background='linear-gradient(180deg,#f3f4f6,#e5e7eb)';
-        themeBtn.textContent='🌞';
-      } else {
-        document.documentElement.style.setProperty('--bg','#0f172a');
-        document.documentElement.style.setProperty('--panel','#0b1224');
-        document.documentElement.style.setProperty('--text','#e2e8f0');
-        document.documentElement.style.setProperty('--muted','#94a3b8');
-        document.documentElement.style.setProperty('--card','#111827cc');
-        document.documentElement.style.setProperty('--chip','#1f2937');
-        document.body.style.background='radial-gradient(1200px 600px at 10% 0%, #0b1224 10%, transparent 60%), radial-gradient(900px 500px at 100% 20%, #06243a 10%, transparent 60%), linear-gradient(180deg, #0a1022, #0f172a)';
-        themeBtn.textContent='🌙';
-      }
+const themeBtn=document.getElementById('theme');
+let light=false;
+themeBtn.addEventListener('click', ()=>{
+  light=!light;
+  if(light){
+    // --- Tema Claro ---
+    document.documentElement.style.setProperty('--bg','#f8fafc');
+    document.documentElement.style.setProperty('--panel','#ffffff');
+    document.documentElement.style.setProperty('--text','#0f172a');
+    document.documentElement.style.setProperty('--muted','#475569');
+    document.documentElement.style.setProperty('--card','#ffffffcc');
+    document.documentElement.style.setProperty('--chip','#e5e7eb');
+    document.body.style.background='linear-gradient(180deg,#f3f4f6,#e5e7eb)';
+    themeBtn.textContent='🌞';
+
+    // 🔑 Corrige cor dos links no tema claro
+    document.querySelectorAll("a").forEach(link=>{
+      link.style.color = "#000"; // preto para contraste
     });
 
+  } else {
+    // --- Tema Escuro ---
+    document.documentElement.style.setProperty('--bg','#0f172a');
+    document.documentElement.style.setProperty('--panel','#0b1224');
+    document.documentElement.style.setProperty('--text','#e2e8f0');
+    document.documentElement.style.setProperty('--muted','#94a3b8');
+    document.documentElement.style.setProperty('--card','#111827cc');
+    document.documentElement.style.setProperty('--chip','#1f2937');
+    document.body.style.background='radial-gradient(1200px 600px at 10% 0%, #0b1224 10%, transparent 60%), radial-gradient(900px 500px at 100% 20%, #06243a 10%, transparent 60%), linear-gradient(180deg, #0a1022, #0f172a)';
+    themeBtn.textContent='🌙';
+
+    // 🔑 Links voltam a ser azulados no escuro
+    document.querySelectorAll("a").forEach(link=>{
+      link.style.color = "#38bdf8"; // azul claro no escuro
+    });
+  }
+});
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
